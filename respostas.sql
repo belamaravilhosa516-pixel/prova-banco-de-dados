@@ -31,7 +31,7 @@ GROUP BY patronus
 ORDER BY COUNT(*) DESC 
 LIMIT 3;
 -- Questão 6 - Utilizando apenas uma consulta com possibilidade de subqueries, responda: busque pelos quatro bruxas ou bruxos que possuem nomes que deram origem ao nome das casas de Hogwarts (House). Remova aqueles que sejam da espécie fantasma (Ghost). A resposta deve conter o sobrenome, o nome e a espécie.
-SELECT last_name, first_name, species 
+SELECT name, species 
 FROM harry_potter 
 WHERE species <> 'Ghost' 
   AND (name LIKE '%Gryffindor%' OR name LIKE '%Hufflepuff%' 
@@ -81,5 +81,5 @@ SELECT
     END AS Posicao, 
     COUNT(*)
 FROM harry_potter
-WHERE skills REGEXP 'Seeker|Beater|Chaser|Keeper'
+WHERE skills ~ 'Seeker|Beater|Chaser|Keeper'
 GROUP BY Posicao;
