@@ -22,7 +22,7 @@ WHERE name LIKE '%Weasley%';
 SELECT name 
 FROM harry_potter 
 WHERE name LIKE '%Weasley%' 
-  AND hair_color <> 'Red';
+  AND Hair_colour <> 'Red';
 -- Questão 5 - Todo bruxo consegue aprender o feitiço do patrono, um feitiço de proteção que toma forma de um animal. É um feitiço complexo e nem todos os bruxos possuem um patrono. Existem pessoas que possuem o mesmo animal patrono (patronus)? Remova os casos em que os valores sejam Unknown (do inglês, desconhecido), Non-corporeal (Não possui forma animal) ou None (nenhum) e ordene-os pela quantidade decrescentemente, limitando nos 3 maiores resultados.
 SELECT patronus, COUNT(*) 
 FROM harry_potter 
