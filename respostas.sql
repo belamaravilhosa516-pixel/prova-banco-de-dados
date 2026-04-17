@@ -55,14 +55,14 @@ WHERE House <> 'Slytherin'
 SELECT name 
 FROM harry_potter 
 WHERE gender = 'Male' 
-  AND birth LIKE '%July 1980%' 
+  AND birth LIKE '%July, 1980%' 
   AND (birth LIKE '29%' OR birth LIKE '30%' OR birth LIKE '31%')
   AND (loyalty LIKE '%Order of the Phoenix%' OR loyalty LIKE '%Albus Dumbledore%');
 
 -- Questão 9 - Busque por todos aqueles que entram nessas restrições: Nasceram em Setembro September (birth); Não faleceram (death); Não possuem nomes iguais àqueles achados na questão 7 (utilize subquery); Possuem lealdade associada a alguém (loyalty); Que seu patrono não seja Unknown nem Non-corporeal; Que possuam alguma casa (house); Sejam do gênero feminino (gender); A resposta deve conter os nomes das bruxas:
 SELECT name 
 FROM harry_potter 
-WHERE birth LIKE '%September%' 
+WHERE birth LIKE '%September,%' 
   AND death IS NULL 
   AND loyalty IS NOT NULL 
   AND patronus NOT IN ('Unknown', 'Non-corporeal') 
