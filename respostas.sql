@@ -74,22 +74,15 @@ WHERE birth LIKE '%September,%'
   );
 
 -- Questão 10 - Entre todas as habilidades, quebre-as e busque por aquelas que falem sobre as posições do Quadribol citadas anteriormente no enunciado (Seeker, Beater, Chaser e Keeper).
-SELECT name, skills 
-FROM harry_potter 
-WHERE skills LIKE '%Seeker%' 
-   OR skills LIKE '%Beater%' 
-   OR skills LIKE '%Chaser%' 
-   OR skills LIKE '%Keeper%';
+SELECT skills FROM (SELECT unnest(string_to_array(skills, ' | ')) AS skills FROM harry_potter)
+WHERE skills = 'Seeker' 
+   OR skills = 'Beater' 
+   OR skills = 'Chaser' 
+   OR skills = 'Keeper' GROUP BY skills;
 
 -- Questão extra - Sabendo das informações da questão anterior (2.A), liste a quantidade de jogadores por posição;
-SELECT 
-    CASE 
-        WHEN skills LIKE '%Seeker%' THEN 'Seeker'
-        WHEN skills LIKE '%Beater%' THEN 'Beater'
-        WHEN skills LIKE '%Chaser%' THEN 'Chaser'
-        WHEN skills LIKE '%Keeper%' THEN 'Keeper'
-    END AS Posicao, 
-    COUNT(*)
-FROM harry_potter
-WHERE skills ~ 'Seeker|Beater|Chaser|Keeper'
-GROUP BY Posicao;
+SELECT skills , count(*) FROM (SELECT unnest(string_to_array(skills, ' | ')) AS skills FROM harry_potter)
+WHERE skills = 'Seeker' 
+   OR skills = 'Beater' 
+   OR skills = 'Chaser' 
+   OR skills = 'Keeper' GROUP BY skills;
